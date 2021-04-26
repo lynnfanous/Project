@@ -6,7 +6,7 @@ import time
 
 
 # Choose host IP and port number to send and receive data
-IP = input("Enter IP address: ") 
+IP = input("Enter IP address: ")
 
 port = int(input("Enter port: "))
 
@@ -19,7 +19,7 @@ UDPorTCP = 0
 
 #Choose UDP or TCP
 while (UDPorTCP != "UDP" and UDPorTCP != "TCP"):
-    UDPorTCP = input("Choose UDP or TCP: ") #allows the client to choose 
+    UDPorTCP = input("Choose UDP or TCP: ") #allows the client to choose
     if (UDPorTCP != "UDP" and UDPorTCP != "TCP"): #if client enters an unkown protocol
         print("Error!")
         print("Please enter 'UDP' or 'TCP':")
@@ -81,7 +81,7 @@ else: #TCP client: Karim Safar
     
     print("Connected.")
     
-    client.send(f"{filename}{SEPARATOR}{filesize}".encode("utf-8")) #sending file name and size
+    client.send("{filename}{SEPARATOR}{filesize}".encode("utf-8")) #sending file name and size
     
     T1 = time.time() # T1 is when we send the file to the server
     
@@ -94,12 +94,12 @@ else: #TCP client: Karim Safar
                 break
             client.sendall(read_bytes)
           
-    print ("File sent successfully!")         
+    print ("File sent successfully!")
     T2 = time.time()  # T2 is when we receive the data from the server
     RTT = T2 - T1 #RTT is the difference
     client.close()
     
-    bandwidth = (filesize*8) / RTT  
+    bandwidth = (filesize*8) / RTT
     print ("Bandwith = ", bandwidth, " bps")
 
 """
@@ -107,3 +107,4 @@ Links used:
 https://www.thepythoncode.com/article/send-receive-files-using-sockets-python
 https://github.com/nikhilroxtomar/Multithreaded-File-Transfer-using-TCP-Socket-in-Python/blob/main/server.py
 https://www.youtube.com/watch?v=MEcL0-3k-2c
+
